@@ -471,4 +471,34 @@ var connection = mysql.createConnection({
       })
     })
   };
+
+  deleteSomething = () => {
+    inquirer.prompt([
+      {
+        name: "delete",
+        type: "list",
+        message: "Select something to delete:",
+        choices: ["Delete department", "Delete role", "Delete employee", "EXIT"]
+      }
+    ]).then(answer => {
+      if (answer.delete === "Delete department") {
+        deleteDepartment();
+      }
+      else if (answer.delete === "Delete role") {
+        deleteRole();
+      }
+      else if (answer.delete === "Delete employee") {
+        deleteEmployee();
+      } else if(answer.delete === "EXIT") {
+        figlet('Thanks for using FSC Employee Tracker', (err, result) => {
+          console.log(err || result);
+        });
+  
+        connection.end();
+      }
+       else {
+        connection.end();
+      }
+    })
+  };
   
