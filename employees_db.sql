@@ -28,3 +28,6 @@ CREATE TABLE employee (
 
 INSERT INTO department (name)
 VALUES ("Sales"), ("Engineering"), ("Human Resources"), ("Legal"), ("Finance"), ("Artist");
+
+INSERT INTO role (title, salary, department_id)
+VALUES ("CEO", "100000", "7"), ("Software Developer", "70000", "2"), ("Lawyer", "60000", "3"), ("Lawyer", "60000", "4"), ("Actuary", "60000", "5"), ("Artist", "70000", "6"), ("Salesperson", "40000", "1");
