@@ -4,7 +4,8 @@
   "description": "Architect and build a solution for managing a company's employees using node, inquirer, and MySQL.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \\ \"Error: no test specified\\\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,7 @@
   "dependencies": {
     "console-table-printer": "^1.6.3",
     "figlet": "^1.4.0",
-    "inquirer": "^7.2.0",
+    "inquirer": "^7.3.3",
     "mysql": "^2.18.1"
   }
 }
