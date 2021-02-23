@@ -31,3 +31,6 @@ VALUES ("Sales"), ("Engineering"), ("Human Resources"), ("Legal"), ("Finance"), 
 
 INSERT INTO role (title, salary, department_id)
 VALUES ("CEO", "100000", "7"), ("Software Developer", "70000", "2"), ("Lawyer", "60000", "3"), ("Lawyer", "60000", "4"), ("Actuary", "60000", "5"), ("Artist", "70000", "6"), ("Salesperson", "40000", "1");
+
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Marion", "Knight", "1"), ("Bill", "Gates", "2", "1"), ("Rob", "Robson", "3", "1"), ("Ted", "Tenderoni", "4", "3"), ("Cisar", "Sarabius", "5", "1"), ("Tupac", "Shakur", "Artist", "6", "1"), ("Jordan", "Belfort", "1", "1");
