@@ -1,26 +1,31 @@
+// Install dependencies
 const mysql = require("mysql");
 const inquirer = require("inquirer");
 const { printTable } = require("console-table-printer");
 const figlet = require("figlet");
+
+// Declare future variables
 let roles;
 let departments;
 let managers;
 let employees;
 
+// Make the connection to MySQL database
 var connection = mysql.createConnection({
   host: "127.0.0.1",
 
-  // Your port; if not 3306
+  // My port
   port: 3306,
 
-  // Your username
+  // My username
   user: "root",
 
-  // Your password
+  // My password (shhh..) and database name
   password: "Colton123!",
   database: "employees_db",
 });
 
+// Use figlet for decorative headers
 figlet("Employee Tracker", (err, result) => {
   console.log(err || result);
 });
@@ -34,6 +39,7 @@ connection.connect(function (err) {
   getEmployees();
 });
 
+// Starting prompt for user to choose
 start = () => {
   inquirer
     .prompt({
@@ -63,6 +69,7 @@ start = () => {
     });
 };
 
+// Query to gather "Roles" information from database
 getRoles = () => {
   connection.query("SELECT id, title FROM role", (err, res) => {
     if (err) throw err;
@@ -71,6 +78,7 @@ getRoles = () => {
   });
 };
 
+// Query to gather "Department" information from database
 getDepartments = () => {
   connection.query("SELECT id, name FROM department", (err, res) => {
     if (err) throw err;
@@ -79,6 +87,7 @@ getDepartments = () => {
   });
 };
 
+// Query to gather "Manager" information from database
 getManagers = () => {
   connection.query(
     "SELECT id, first_name, last_name, CONCAT_WS(' ', first_name, last_name) AS managers FROM employee",
@@ -90,6 +99,7 @@ getManagers = () => {
   );
 };
 
+// Query to gather "Employee" information from database
 getEmployees = () => {
   connection.query(
     "SELECT id, CONCAT_WS(' ', first_name, last_name) AS Employee_Name FROM employee",
@@ -101,6 +111,7 @@ getEmployees = () => {
   );
 };
 
+// If the user chooses to add something, they are prompted with the following:
 addSomething = () => {
   inquirer
     .prompt([
@@ -133,6 +144,7 @@ addSomething = () => {
     });
 };
 
+// If the user chooses to add a new department, they are prompted with the following:
 addDepartment = () => {
   inquirer
     .prompt([
@@ -155,6 +167,7 @@ addDepartment = () => {
     });
 };
 
+// If the user chooses to add a new role, they are prompted with the following:
 addRole = () => {
   let departmentOptions = [];
   for (i = 0; i < departments.length; i++) {
@@ -199,6 +212,7 @@ addRole = () => {
     });
 };
 
+// If the user chooses to add a new employee, they are prompted with the following:
 addEmployee = () => {
   getRoles();
   getManagers();
@@ -278,6 +292,7 @@ addEmployee = () => {
     });
 };
 
+// If the user chooses to view something, they are prompted with the following:
 viewSomething = () => {
   inquirer
     .prompt([
@@ -307,6 +322,7 @@ viewSomething = () => {
     });
 };
 
+// If the user chooses to view the departments in the company, the department table from the database is displayed. 
 viewDepartments = () => {
   connection.query("SELECT * FROM department", (err, res) => {
     if (err) throw err;
@@ -319,6 +335,7 @@ viewDepartments = () => {
   });
 };
 
+// If the user chooses to view the roles in the company, the role table from the database is displayed.
 viewRoles = () => {
   connection.query(
     "SELECT  r.id, r.title, r.salary, d.name as Department_Name FROM role AS r INNER JOIN department AS d ON r.department_id = d.id",
@@ -334,6 +351,7 @@ viewRoles = () => {
   );
 };
 
+// If the user chooses to view the employees in the company, the employee table from the database is displayed. 
 viewEmployees = () => {
   connection.query(
     'SELECT e.id, e.first_name, e.last_name, d.name AS department, r.title, r.salary, CONCAT_WS(" ", m.first_name, m.last_name) AS manager FROM employee e LEFT JOIN employee m ON m.id = e.manager_id INNER JOIN role r ON e.role_id = r.id INNER JOIN department d ON r.department_id = d.id ORDER BY e.id ASC',
@@ -349,6 +367,7 @@ viewEmployees = () => {
   );
 };
 
+// If the user chooses to update something, they are prompted with the following:
 updateSomething = () => {
   inquirer
     .prompt([
@@ -376,6 +395,7 @@ updateSomething = () => {
     });
 };
 
+// If the user chooses to update an employee role, they will be prompted with the following:
 updateEmployeeRole = () => {
   let employeeOptions = [];
 
@@ -442,6 +462,7 @@ updateEmployeeRole = () => {
     });
 };
 
+// If the user chooses to update an employee's manager, they will be prompted with the following:
 updateEmployeeManager = () => {
   let employeeOptions = [];
 
@@ -510,6 +531,7 @@ updateEmployeeManager = () => {
     });
 };
 
+// If the user chooses to delete something, they will be prompted with the following:
 deleteSomething = () => {
   inquirer
     .prompt([
@@ -543,7 +565,7 @@ deleteSomething = () => {
       }
     });
 };
-
+// If they choose to delete a department, they will have to choose from a list of the current departments in the database.
 deleteDepartment = () => {
   let departmentOptions = [];
   for (var i = 0; i < departments.length; i++) {
@@ -583,6 +605,7 @@ deleteDepartment = () => {
     });
 };
 
+// If they choose to delete a role, they will have to choose from a list of the current roles in the database.
 deleteRole = () => {
   let roleOptions = [];
   for (var i = 0; i < roles.length; i++) {
@@ -620,6 +643,7 @@ deleteRole = () => {
     });
 };
 
+// If they choose to delete an employee, they will have to choose from a list of the current employees in the database.
 deleteEmployee = () => {
   let employeeOptions = [];
   for (var i = 0; i < employees.length; i++) {
