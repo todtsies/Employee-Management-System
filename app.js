@@ -20,3 +20,51 @@ var connection = mysql.createConnection({
     password: "Colton123!",
     database: "employees_db"
   });
+
+  figlet('Employee Tracker', (err, result) => {
+    console.log(err || result);
+  });
+
+  connection.connect(function(err) {
+    if (err) throw err;
+    start();
+    getDepartments();
+    getRoles();
+    getManagers();
+    getEmployees();
+  });
+
+  start = () => {
+
+    inquirer
+      .prompt({
+        name: "choices",
+        type: "list",
+        message: "What would you like to do?",
+        choices: ["ADD", "VIEW", "UPDATE", "DELETE", "EXIT"]
+      })
+      .then(function(answer) {
+        if (answer.choices === "ADD") {
+          addSomething();
+        }
+        else if (answer.choices === "VIEW") {
+          viewSomething();
+        } 
+        else if (answer.choices === "UPDATE") {
+          updateSomething();
+        }
+        else if (answer.choices === "DELETE") {
+          deleteSomething();
+        }
+        else if (answer.choices === "EXIT") {
+          figlet('Thanks for using the Employee Tracker', (err, result) => {
+            console.log(err || result);
+          });
+        
+          connection.end();
+        }
+        else{
+          connection.end();
+        }
+      });
+  }
