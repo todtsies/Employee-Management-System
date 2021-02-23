@@ -1,8 +1,11 @@
 <h1 align="center">Employee Management System</h1>
   
 [![license](https://img.shields.io/static/v1?label=license&message=MIT&color=yellow)](https://opensource.org/licenses/MIT)
+  
+  ## Description
+  The Employee Management System was built to create an interface that makes it easier for non-developers to view and interact with the information stored in the employees_db database. In this application, I built a solution for managing a company's employees using Node, Inquirer, and MySQL. As a business owner, you will be able to view and manage the departments, roles, and employees in your company so you can organize and plan your business.
 
-## Table of Contents
+  ## Table of Contents
   - [Description](#description)
   - [Demo](#demo)
   - [Installation](#installation)
@@ -13,24 +16,18 @@
   - [Technologies](#technologies)
   - [Questions](#questions)
   
-  ## Description
-  The Employee Management System was built to create an interface that makes it easier for non-developers to view and interact with the information stored in the employees_db. In this application, I built a solution for managing a company's employees using Node, Inquirer, and MySQL. As a business owner, you will be able to view and manage the departments, roles, and employees in your company so you can organize and plan your business.
-  
   ## Demo
   ![Application Preview](assets/Short_Preview.gif)
   
   To view the full demo, please direct yourself to ```assests``` folder.
   
   ## Installation
- ``` 
- node i inquirer
+  Employee Management System requires the installation of inquirer, MySQL, and figlet from npm to run properly in a local dev environment. To install the project's npm dependencies, navigate to the project's root directory and run:
+
   ```
-   ``` 
- node i MySQL
-  ```
- ``` 
- node i figlet 
- ```
+  npm i
+  ``` 
+ 
  
   Once all third-party packages have been successfully installed, the application is ready to use. For more details, reference the application's ```package.json``` file.
   
