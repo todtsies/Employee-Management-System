@@ -133,3 +133,20 @@ var connection = mysql.createConnection({
       }
     })
   };
+
+  addDepartment = () => {
+    inquirer.prompt([
+      {
+        name: "department",
+        type: "input",
+        message: "What department would you like to add?"
+      }
+    ]).then(function(answer) {
+      connection.query(`INSERT INTO department (name) VALUES ('${answer.department}')`, (err, res) => {
+        if (err) throw err;
+        console.log("1 new department added: " + answer.department);
+        getDepartments();
+        start();
+      }) 
+    })
+  };
