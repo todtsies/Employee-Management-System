@@ -1,0 +1,25 @@
+{
+  "name": "mysql",
+  "version": "1.0.0",
+  "description": "Architect and build a solution for managing a company's employees using node, inquirer, and MySQL.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \\ \"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/todtsies/Employee-Management-System.git"
+  },
+  "author": "Emily B. Todt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/todtsies/Employee-Management-System/issues"
+  },
+  "homepage": "https://github.com/todtsies/Employee-Management-System#readme",
+  "dependencies": {
+    "console-table-printer": "^1.6.3",
+    "figlet": "^1.4.0",
+    "inquirer": "^7.2.0",
+    "mysql": "^2.18.1"
+  }
+}
