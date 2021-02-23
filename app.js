@@ -312,3 +312,15 @@ var connection = mysql.createConnection({
       start();
     });
   };
+
+  viewEmployees = () => {
+    connection.query('SELECT e.id, e.first_name, e.last_name, d.name AS department, r.title, r.salary, CONCAT_WS(" ", m.first_name, m.last_name) AS manager FROM employee e LEFT JOIN employee m ON m.id = e.manager_id INNER JOIN role r ON e.role_id = r.id INNER JOIN department d ON r.department_id = d.id ORDER BY e.id ASC', (err, res) => {
+      if (err) throw err;
+      figlet('Employees', (err, result) => {
+        console.log(err || result);
+      });
+    
+      printTable(res);
+      start();
+    });
+  };
