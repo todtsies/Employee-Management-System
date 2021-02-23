@@ -288,3 +288,15 @@ var connection = mysql.createConnection({
       }
     })
   };
+
+  viewDepartments = () => {
+    connection.query("SELECT * FROM department", (err, res) => {
+      if (err) throw err;
+      figlet('Departments', (err, result) => {
+        console.log(err || result);
+      });
+  
+      printTable(res);
+      start();
+    });
+  };
