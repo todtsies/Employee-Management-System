@@ -3,7 +3,7 @@
 [![license](https://img.shields.io/static/v1?label=license&message=MIT&color=yellow)](https://opensource.org/licenses/MIT)
   
   ## Description
-  The Employee Management System was built to create an interface that makes it easier to view and interact with the information stored in the employees_db database. In this application, I built a solution for managing a company's employees using Node, Inquirer, and MySQL. As a business owner, you will be able to view and manage the departments, roles, and employees in your company so you can organize and plan your business.
+  The Employee Management System was built to create an interface that makes it easier to view and interact with the information stored in the employees_db database. In this application, I built a solution for managing a company's employees using Node, Inquirer, and MySQL. As a business owner, you will be able to view and manage the departments, roles, and employees in your company so you can better organize and clearly plan your business.
 
   ## Table of Contents
   - [Description](#description)
